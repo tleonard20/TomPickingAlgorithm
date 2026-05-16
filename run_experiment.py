@@ -6,8 +6,8 @@ store-specific patches never bleed across runs.
 
 Usage:
     python run_experiment.py                    # all stores, all zones
-    python run_experiment.py 1419               # one store, all zones
-    python run_experiment.py 1419 chilled       # one store, one zone
+    python run_experiment.py 1052               # one store, all zones
+    python run_experiment.py 1052 chilled       # one store, one zone
     python run_experiment.py --update-baseline  # after a win: promote
                                                 # current run to new v1.0
 
@@ -16,9 +16,8 @@ Output:
     results/exp_YYYY-MM-DD_HHMM_<s>_<z>.txt — per-zone detail
 
 Approximate runtimes (NEW algorithm only, no PROD rebuild):
-    1419:  Ambient ~5m  Chilled ~3m  Freezer ~2s  Security ~2s
-    1052:  Ambient ~4m  Chilled ~1m45s  Freezer ~2s  Security ~2s
-    1030:  Ambient ~3m30s  Chilled ~1m  Freezer ~4s  Security ~2s
+    1052:  Ambient ~4m  Chilled ~1m45s  Freezer ~2s
+    1030:  Ambient ~3m30s  Chilled ~1m  Freezer ~4s
 """
 from __future__ import annotations
 
@@ -35,7 +34,6 @@ RESULTS_DIR = os.path.join(THIS_DIR, "results")
 BASELINES_DIR = os.path.join(THIS_DIR, "baselines")
 
 STORE_SETUPS = {
-    "1419": "_store_1419_setup",
     "1052": "_store_1052_setup",
     "1030": "_store_1030_setup",
 }
@@ -82,7 +80,7 @@ def _worker(store: str, zone: str) -> None:
 
     # Abort if matrix coverage for this zone is critically low (< 10%) — results would be garbage.
     # Normal "online aisles" filtering legitimately removes 30-40% of items; this catches
-    # the case where the wrong matrix is paired with the zone (e.g. 1419 Freezer).
+    # the case where the wrong matrix is paired with the zone.
     if all_zone_items and len(zone_items) / len(all_zone_items) < 0.10:
         error = {
             "error": "low_matrix_coverage",
@@ -251,7 +249,7 @@ def print_summary(all_results: Dict, file=sys.stdout):
 
     totals = {"new": 0.0, "v1": 0.0, "prod": 0.0, "have_v1": 0, "have_prod": 0}
 
-    for store in ["1419", "1052", "1030"]:
+    for store in ["1052", "1030"]:
         for zone in WALKING_ZONES:
             key = (store, zone)
             if key not in all_results:

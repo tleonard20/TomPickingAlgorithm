@@ -2,18 +2,17 @@
 
 Usage:
     python run_validation.py              # all stores, all zones
-    python run_validation.py 1419         # one store, all zones
-    python run_validation.py 1419 chilled # one store, one zone
+    python run_validation.py 1052         # one store, all zones
+    python run_validation.py 1052 chilled # one store, one zone
 
 Output:
     results/YYYY-MM-DD_HHMM_<store>_<zone>.txt  — full validator output
     results/YYYY-MM-DD_HHMM_summary.txt          — headline metrics table
 
 Runtime (sequential, approximate):
-    Store 1419:  Ambient ~5m30s  Chilled ~3m20s  Freezer ~2s  Security ~2s
-    Store 1052:  Ambient ~4m20s  Chilled ~1m45s  Freezer ~2s  Security ~2s
-    Store 1030:  Ambient ~3m40s  Chilled ~1m05s  Freezer ~4s  Security ~2s
-    Total all:   ~20 minutes
+    Store 1052:  Ambient ~4m20s  Chilled ~1m45s  Freezer ~2s
+    Store 1030:  Ambient ~3m40s  Chilled ~1m05s  Freezer ~4s
+    Total all:   ~12 minutes
 """
 from __future__ import annotations
 
@@ -33,14 +32,6 @@ RESULTS_DIR = os.path.join(THIS_DIR, "results")
 # ---------------------------------------------------------------------------
 
 STORES = {
-    "1419": {
-        "setup": "_store_1419_setup",
-        "zones": {
-            "ambient": "deep_dive_ambient_v4_2",
-            "chilled": "deep_dive_chilled",
-            "freezer": "deep_dive_freezer",
-        },
-    },
     "1052": {
         "setup": "_store_1052_setup",
         "zones": {
@@ -208,7 +199,7 @@ def print_summary(results: Dict, file=None):
     agg = {"new_walk": 0, "prod_walk": 0, "new_cost": 0, "prod_cost": 0,
            "new_tr": 0, "prod_tr": 0}
 
-    for store in ["1419", "1052", "1030"]:
+    for store in ["1052", "1030"]:
         for zone in ["ambient", "chilled", "freezer"]:
             key = (store, zone)
             if key not in results:
@@ -246,7 +237,7 @@ def print_summary(results: Dict, file=None):
     p(f"\n{'store':<6} {'zone':<10} {'new_tr':>6} {'prod_tr':>7} "
       f"{'new_logical':>12} {'prod_logical':>13} {'new_physical':>13}")
     p("-" * 65)
-    for store in ["1419", "1052", "1030"]:
+    for store in ["1052", "1030"]:
         key = (store, "security")
         if key not in results:
             continue
@@ -263,7 +254,7 @@ def print_summary(results: Dict, file=None):
     # Runtimes
     p(f"\n{'store':<6} {'zone':<10} {'elapsed':>10}")
     p("-" * 30)
-    for store in ["1419", "1052", "1030"]:
+    for store in ["1052", "1030"]:
         for zone in ["ambient", "chilled", "freezer", "security"]:
             key = (store, zone)
             if key not in results:
