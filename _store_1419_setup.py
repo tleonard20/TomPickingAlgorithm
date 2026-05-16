@@ -105,7 +105,7 @@ def _ensure_orders_csv() -> None:
                 "Aisle_Location": a,
                 "Bay_Location": b,
                 "Ailse_Bay_Concat": f"{a}_{b}" if a and b else "",
-                "TransitID": _str(row[col["TransitCode"]]),
+                "TransitID": _str(row[col["Truck"]]),
                 "Truck": _str(row[col["Truck"]]),
                 "TrolleyID": _int(row[col["TrolleyID"]]),
                 "TrayHeaderID": _int(row[col["TrayHeaderID"]]),

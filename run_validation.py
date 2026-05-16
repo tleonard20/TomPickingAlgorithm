@@ -36,28 +36,25 @@ STORES = {
     "1419": {
         "setup": "_store_1419_setup",
         "zones": {
-            "ambient":  "deep_dive_ambient_v4_2",
-            "chilled":  "deep_dive_chilled",
-            "freezer":  "deep_dive_freezer",
-            "security": "deep_dive_security",
+            "ambient": "deep_dive_ambient_v4_2",
+            "chilled": "deep_dive_chilled",
+            "freezer": "deep_dive_freezer",
         },
     },
     "1052": {
         "setup": "_store_1052_setup",
         "zones": {
-            "ambient":  "deep_dive_ambient_v4_2",
-            "chilled":  "deep_dive_chilled",
-            "freezer":  "deep_dive_freezer",
-            "security": "deep_dive_security",
+            "ambient": "deep_dive_ambient_v4_2",
+            "chilled": "deep_dive_chilled",
+            "freezer": "deep_dive_freezer",
         },
     },
     "1030": {
         "setup": "_store_1030_setup",
         "zones": {
-            "ambient":  "deep_dive_ambient_v4_2",
-            "chilled":  "deep_dive_chilled",
-            "freezer":  "deep_dive_freezer",
-            "security": "deep_dive_security",
+            "ambient": "deep_dive_ambient_v4_2",
+            "chilled": "deep_dive_chilled",
+            "freezer": "deep_dive_freezer",
         },
     },
 }

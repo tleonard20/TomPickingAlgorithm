@@ -1,0 +1,23 @@
+{
+  "store": "1419",
+  "note": "PAT=3, 48L totes, two staging locations",
+  "captured_at": "2026-05-12",
+  "zones": {
+    "ambient": {
+      "prod":    {"trolleys": 136, "totes": 793, "walk_m": 32888.6, "uturns": 134, "cost": 33424.6},
+      "cvrp_v1": {"trolleys": 132, "totes": 788, "walk_m": 31186.7, "uturns":  82, "cost": 31514.7}
+    },
+    "chilled": {
+      "prod":    {"trolleys": 97, "totes": 560, "walk_m": 17968.0, "uturns": 54, "cost": 18184.0},
+      "cvrp_v1": {"trolleys": 96, "totes": 547, "walk_m": 17044.0, "uturns": 19, "cost": 17120.0}
+    },
+    "freezer": {
+      "prod":    {"trolleys": 17, "totes": 125, "walk_m": 1687.0, "uturns": 11, "cost": 1731.0},
+      "cvrp_v1": {"trolleys": 14, "totes": 123, "walk_m": 1473.0, "uturns": 11, "cost": 1517.0}
+    },
+    "security": {
+      "prod":    {"trolleys": 1, "logical_totes": 2, "physical_totes": 2},
+      "cvrp_v1": {"trolleys": 1, "logical_totes": 2, "physical_totes": 1}
+    }
+  }
+}
