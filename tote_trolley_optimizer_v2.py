@@ -2359,12 +2359,9 @@ def _pick_single_trolley_affinity(eligible: List[ToteResult], cfg: StoreConfig,
             cand_tids = chosen_tids | set(eligible[cand].transit_ids)
             if len(cand_tids) > pat_n:
                 continue
-            new_items = chosen_items + list(eligible[cand].items)
-            if not _cc_ok(new_items):
-                continue
             chosen.append(cand)
             chosen_tids = cand_tids
-            chosen_items = new_items
+            chosen_items = chosen_items + list(eligible[cand].items)
         d, u, _ = trip_cost(chosen_items, matrix, cfg)
         c = _path_cost(d, u, cfg)
         seed_min_tid = min(eligible[seed].transit_ids) if eligible[seed].transit_ids else "ZZ"
