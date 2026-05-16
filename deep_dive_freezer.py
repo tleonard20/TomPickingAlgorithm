@@ -17,8 +17,7 @@ from collections import Counter, defaultdict
 from typing import Dict
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.dirname(THIS_DIR)
-ORDERS_CSV = os.path.join(PROJECT_ROOT, "TestStore", "1419Orders.csv")
+ORDERS_CSV = os.path.join(THIS_DIR, "1052Orders.csv")
 
 sys.path.insert(0, THIS_DIR)
 import tote_trolley_optimizer_v2 as v2  # type: ignore
